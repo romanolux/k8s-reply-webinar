@@ -15,7 +15,6 @@ import (
 // logging, client connectivity, informing (list and watching)
 // queueing, and handling of resource changes
 type Controller struct {
-	logger    *log.Entry
 	clientset kubernetes.Interface
 	queue     workqueue.RateLimitingInterface
 	informer  cache.SharedIndexInformer
@@ -30,7 +29,7 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 	// have completed existing items then shutdown
 	defer c.queue.ShutDown()
 
-	c.logger.Info("Controller.Run: initiating")
+	fmt.Println("Controller.Run: initiating")
 
 	// run the informer to start listing and watching resources
 	go c.informer.Run(stopCh)
@@ -40,7 +39,7 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 		utilruntime.HandleError(fmt.Errorf("Error syncing cache"))
 		return
 	}
-	c.logger.Info("Controller.Run: cache sync complete")
+	fmt.Println("Controller.Run: cache sync complete")
 
 	// run the runWorker method every second with a stop channel
 	wait.Until(c.runWorker, time.Second, stopCh)
@@ -101,10 +100,10 @@ func (c *Controller) processNextItem() bool {
 	item, exists, err := c.informer.GetIndexer().GetByKey(keyRaw)
 	if err != nil {
 		if c.queue.NumRequeues(key) < 5 {
-			c.logger.Errorf("Controller.processNextItem: Failed processing item with key %s with error %v, retrying", key, err)
+			fmt.Printf("Controller.processNextItem: Failed processing item with key %s with error %v, retrying", key, err)
 			c.queue.AddRateLimited(key)
 		} else {
-			c.logger.Errorf("Controller.processNextItem: Failed processing item with key %s with error %v, no more retries", key, err)
+			fmt.Printf("Controller.processNextItem: Failed processing item with key %s with error %v, no more retries", key, err)
 			c.queue.Forget(key)
 			utilruntime.HandleError(err)
 		}
@@ -117,11 +116,11 @@ func (c *Controller) processNextItem() bool {
 	// after both instances, we want to forget the key from the queue, as this indicates
 	// a code path of successful queue key processing
 	if !exists {
-		c.logger.Infof("Controller.processNextItem: object deleted detected: %s", keyRaw)
+		fmt.Printf("Controller.processNextItem: object deleted detected: %s", keyRaw)
 		c.handler.ObjectDeleted(item)
 		c.queue.Forget(key)
 	} else {
-		c.logger.Infof("Controller.processNextItem: object created detected: %s", keyRaw)
+		fmt.Printf("Controller.processNextItem: object created detected: %s", keyRaw)
 		c.handler.ObjectCreated(item)
 		c.queue.Forget(key)
 	}

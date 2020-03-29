@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
@@ -17,25 +18,25 @@ import (
 )
 
 // retrieve the Kubernetes cluster client from outside of the cluster
-func getKubernetesClient() (kubernetes.Interface, myresourceclientset.Interface) {
+func getKubernetesClient() (kubernetes.Interface, k8dynamoclientset.Interface) {
 	// construct the path to resolve to `~/.kube/config`
 	kubeConfigPath := os.Getenv("HOME") + "/.kube/config"
 
 	// create the config from the path
 	config, err := clientcmd.BuildConfigFromFlags("", kubeConfigPath)
 	if err != nil {
-		log.Fatalf("getClusterConfig: %v", err)
+		fmt.Printf("getClusterConfig: %v", err)
 	}
 
 	// generate the client based off of the config
 	client, err := kubernetes.NewForConfig(config)
 	if err != nil {
-		log.Fatalf("getClusterConfig: %v", err)
+		fmt.Printf("getClusterConfig: %v", err)
 	}
 
 	k8dynamoClient, err := k8dynamoclientset.NewForConfig(config)
 	if err != nil {
-		log.Fatalf("getClusterConfig: %v", err)
+		fmt.Printf("getClusterConfig: %v", err)
 	}
 
 	fmt.Println("Successfully constructed k8s client")
@@ -71,7 +72,7 @@ func main() {
 			// convert the resource object into a key (in this case
 			// we are just doing it in the format of 'namespace/name')
 			key, err := cache.MetaNamespaceKeyFunc(obj)
-			fmt.Printlnf("Add myresource: %s", key)
+			fmt.Printf("Add myresource: %s", key)
 			if err == nil {
 				// add the key to the queue for the handler to get
 				queue.Add(key)
@@ -79,7 +80,7 @@ func main() {
 		},
 		UpdateFunc: func(oldObj, newObj interface{}) {
 			key, err := cache.MetaNamespaceKeyFunc(newObj)
-			fmt.Printlnf("Update myresource: %s", key)
+			fmt.Printf("Update myresource: %s", key)
 			if err == nil {
 				queue.Add(key)
 			}
@@ -91,7 +92,7 @@ func main() {
 			//
 			// this then in turn calls MetaNamespaceKeyFunc
 			key, err := cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
-			fmt.Printlnf("Delete myresource: %s", key)
+			fmt.Printf("Delete myresource: %s", key)
 			if err == nil {
 				queue.Add(key)
 			}
@@ -102,7 +103,6 @@ func main() {
 	// handle logging, connections, informing (listing and watching), the queue,
 	// and the handler
 	controller := Controller{
-		logger:    log.NewEntry(log.New()),
 		clientset: client,
 		informer:  informer,
 		queue:     queue,
