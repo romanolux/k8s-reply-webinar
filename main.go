@@ -13,7 +13,7 @@ import (
 
 	k8dynamoclientset "github.com/romanolux/k8s-reply-webinar/pkg/client/clientset/versioned"
 
-	k8dynamoinformer_v1 "github.com/romanolux/k8s-reply-webinar/pkg/informers/externalversions/k8dynamo/v1"
+	k8dynamoinformer_v1 "github.com/romanolux/k8s-reply-webinar/pkg/client/informers/externalversions/k8dynamo/v1"
 )
 
 // retrieve the Kubernetes cluster client from outside of the cluster
