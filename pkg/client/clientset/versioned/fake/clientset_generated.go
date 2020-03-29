@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "k8s-webinar/pkg/client/clientset/versioned"
-	stormv1 "k8s-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1"
-	fakestormv1 "k8s-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1/fake"
+	clientset "k8s-reply-webinar/pkg/client/clientset/versioned"
+	stormv1 "k8s-reply-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1"
+	fakestormv1 "k8s-reply-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1/fake"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"

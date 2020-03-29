@@ -19,9 +19,9 @@ limitations under the License.
 package externalversions
 
 import (
-	versioned "k8s-webinar/pkg/client/clientset/versioned"
-	internalinterfaces "k8s-webinar/pkg/client/informers/externalversions/internalinterfaces"
-	k8dynamo "k8s-webinar/pkg/client/informers/externalversions/k8dynamo"
+	versioned "k8s-reply-webinar/pkg/client/clientset/versioned"
+	internalinterfaces "k8s-reply-webinar/pkg/client/informers/externalversions/internalinterfaces"
+	k8dynamo "k8s-reply-webinar/pkg/client/informers/externalversions/k8dynamo"
 	reflect "reflect"
 	sync "sync"
 	time "time"

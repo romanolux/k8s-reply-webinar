@@ -20,7 +20,7 @@ package fake
 
 import (
 	"context"
-	k8dynamov1 "k8s-webinar/pkg/apis/k8dynamo/v1"
+	k8dynamov1 "k8s-reply-webinar/pkg/apis/k8dynamo/v1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
