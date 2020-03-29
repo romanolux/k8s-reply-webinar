@@ -20,7 +20,8 @@ package versioned
 
 import (
 	"fmt"
-	stormv1 "k8s-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1"
+
+	stormv1 "github.com/romanolux/k8s-reply-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1"
 
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"

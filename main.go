@@ -11,9 +11,9 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/workqueue"
 
-	k8dynamoclientset "pkg/client/clientset/versioned"
+	k8dynamoclientset "github.com/romanolux/k8s-reply-webinar/pkg/client/clientset/versioned"
 
-	k8dynamoinformer_v1 "pkg/informers/externalversions/k8dynamo/v1"
+	k8dynamoinformer_v1 "github.com/romanolux/k8s-reply-webinar/pkg/informers/externalversions/k8dynamo/v1"
 )
 
 // retrieve the Kubernetes cluster client from outside of the cluster

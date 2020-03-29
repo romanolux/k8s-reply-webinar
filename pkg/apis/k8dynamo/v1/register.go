@@ -5,7 +5,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	k8sdynamo "k8s-webinar/pkg/apis/k8dynamo"
+	k8sdynamo "github.com/romanolux/k8s-reply-webinar/pkg/apis/k8dynamo"
 )
 
 // GroupVersion is the identifier for the API which includes

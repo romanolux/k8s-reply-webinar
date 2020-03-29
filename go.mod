@@ -1,4 +1,4 @@
-module webinar
+module github.com/romanolux/k8s-reply-webinar
 
 go 1.14
 

@@ -20,9 +20,10 @@ package v1
 
 import (
 	"context"
-	v1 "k8s-webinar/pkg/apis/k8dynamo/v1"
-	scheme "k8s-webinar/pkg/client/clientset/versioned/scheme"
 	"time"
+
+	v1 "github.com/romanolux/k8s-reply-webinar/pkg/apis/k8dynamo/v1"
+	scheme "github.com/romanolux/k8s-reply-webinar/pkg/client/clientset/versioned/scheme"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
