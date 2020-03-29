@@ -6,7 +6,7 @@ spec:
   group: storm.com
   version: v1
   names:
-    kind: k8dynamo
+    kind: K8dynamo
     singular: k8dynamo
     plural: k8dynamos
     shortNames:
