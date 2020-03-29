@@ -20,12 +20,12 @@ package v1
 
 import (
 	"context"
-	k8dynamov1 "k8s-reply-webinar/pkg/apis/k8dynamo/v1"
-	versioned "k8s-reply-webinar/pkg/client/clientset/versioned"
-	internalinterfaces "k8s-reply-webinar/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "k8s-reply-webinar/pkg/client/listers/k8dynamo/v1"
 	time "time"
 
+	k8dynamov1 "github.com/romanolux/k8s-reply-webinar/pkg/apis/k8dynamo/v1"
+	versioned "github.com/romanolux/k8s-reply-webinar/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/romanolux/k8s-reply-webinar/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/romanolux/k8s-reply-webinar/pkg/client/listers/k8dynamo/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

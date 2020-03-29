@@ -19,8 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1 "k8s-reply-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1"
-
+	v1 "github.com/romanolux/k8s-reply-webinar/pkg/client/clientset/versioned/typed/k8dynamo/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
