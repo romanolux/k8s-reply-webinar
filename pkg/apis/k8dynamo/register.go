@@ -1,3 +1,3 @@
-package k8sdynamo
+package k8dynamo
 
 const GroupName = "storm.com"

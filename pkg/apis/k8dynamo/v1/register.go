@@ -1,17 +1,16 @@
 package v1
 
 import (
+	"github.com/romanolux/k8s-reply-webinar/pkg/apis/k8dynamo"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-
-	k8sdynamo "github.com/romanolux/k8s-reply-webinar/pkg/apis/k8dynamo"
 )
 
 // GroupVersion is the identifier for the API which includes
 // the name of the group and the version of the API
 var SchemeGroupVersion = schema.GroupVersion{
-	Group:   k8sdynamo.GroupName,
+	Group:   k8dynamo.GroupName,
 	Version: "v1",
 }
 
