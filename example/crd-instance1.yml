@@ -1,0 +1,8 @@
+apiVersion: "storm.com/v1"
+kind: k8dynamo
+metadata:
+  name: my-awesome-dynamo
+spec:
+  tableName: "test"
+  readUnit: 1
+  writeUnit: 1
