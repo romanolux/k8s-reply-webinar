@@ -117,7 +117,14 @@ func (c *Controller) processNextItem() bool {
 	// a code path of successful queue key processing
 	if !exists {
 		fmt.Printf("Controller.processNextItem: object deleted detected: %s", keyRaw)
-		c.handler.ObjectDeleted(item)
+		fmt.Println("HERE")
+		key, err := cache.DeletionHandlingMetaNamespaceKeyFunc(item)
+		if err == nil {
+			fmt.Println(key)
+		}
+		fmt.Println(keyRaw)
+		fmt.Println("HERE2")
+		c.handler.ObjectDeleted(keyRaw)
 		c.queue.Forget(key)
 	} else {
 		fmt.Printf("Controller.processNextItem: object created detected: %s", keyRaw)

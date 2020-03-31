@@ -93,6 +93,7 @@ func main() {
 			// this then in turn calls MetaNamespaceKeyFunc
 			key, err := cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
 			fmt.Printf("Delete myresource: %s", key)
+			fmt.Println(obj)
 			if err == nil {
 				queue.Add(key)
 			}
